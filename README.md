@@ -34,7 +34,7 @@
 入部しようか迷っている方のために、DiscordのサーバーやTwitterのDMも解放しておりますので、ぜひ気軽にご相談ください。
 私たちは、あなたと共に学べる日を楽しみにしています。
 
-Discordサーバーに参加 (できません)
+[Discordサーバーに参加](https://discord.gg/7tebKugCWp)
 
 [@nitkpc にDMを送信 (Twitterに移動)](https://twitter.com/messages/compose?recipient_id=1508526577549975552)
  
