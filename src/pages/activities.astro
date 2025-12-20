@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+
+const activities = [
+  {
+    id: 'learning',
+    icon: '💻',
+    title: 'プログラミング学習',
+    description: '実験室にはパソコンやホワイトボードなどがあり、それらを活用しながら授業の課題や大会に向けてプログラミングを行なっています。',
+    details: [
+      '自分のノートパソコンを持参する方が多いですが、持っていないという方もプロ研が所有しているものを利用することができます',
+      '先輩部員がマンツーマンでサポートします',
+      '自分のペースで学習できます',
+    ],
+    highlights: [
+      { label: '対象', value: '全学年' },
+      { label: '場所', value: 'マルチワークラボラトリ' },
+      { label: '時間', value: '放課後（16:40〜18:00）' },
+    ]
+  },
+  {
+    id: 'events',
+    icon: '🎪',
+    title: 'オープンキャンパス・高専祭',
+    description: 'プログラミング学習の一環として、毎年開催されるオープンキャンパス・高専祭に作品を展示しています。',
+    details: [
+      'C言語で作られた作品や、Unityで制作した3Dゲームなど、個性あふれる作品を展示',
+      '来場者の方々に自分の作品を発表できる貴重な機会',
+      '自分の技術力を他の人に伝える経験ができます',
+    ],
+    highlights: [
+      { label: '開催時期', value: '夏（OC）・秋（高専祭）' },
+      { label: '内容', value: '作品展示・発表' },
+      { label: '参加', value: '希望者' },
+    ]
+  },
+  {
+    id: 'procon',
+    icon: '🏆',
+    title: '高専プロコン',
+    description: '毎年10月に開催される「全国高等専門学校プログラミングコンテスト」に参加しています。',
+    details: [
+      '3つの部門があり、与えられたテーマに従いながらチームで約半年に渡って作品を制作',
+      'チーム開発をすることの大変さや、新しい技術との出会いなど、確実に自分をスキルアップに繋がります',
+      '全国の高専生と競い合う貴重な経験',
+    ],
+    highlights: [
+      { label: '開催時期', value: '毎年10月' },
+      { label: '制作期間', value: '約半年' },
+      { label: '形式', value: 'チーム開発' },
+    ]
+  },
+  {
+    id: 'u16',
+    icon: '🚀',
+    title: 'U-16プロコン 釧路大会',
+    description: '新1年生(16歳以下)の会員の方には、毎年秋に行われる「U-16プログラミングコンテスト」に参加していただきます。',
+    details: [
+      '数回にわたり大会に関する講習会も実施しているので、自信がない方も安心',
+      '釧路大会で上位3位に入賞した方は全国大会に出場することができます',
+      '毎年プロ研から1年生が全道大会へ進出しています',
+    ],
+    highlights: [
+      { label: '対象', value: '16歳以下（1年生）' },
+      { label: '開催時期', value: '毎年秋' },
+      { label: '実績', value: '毎年全道大会進出' },
+    ]
+  }
+];
+---
+
+<BaseLayout title="活動内容 | NITKPC">
+  <!-- Page Header -->
+  <section class="pt-32 pb-16 bg-gradient-radial">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        <span class="gradient-text">活動内容</span>
+      </h1>
+      <p class="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+        プログラミング研究部の様々な活動をご紹介します
+      </p>
+    </div>
+  </section>
+  
+  <!-- Activities -->
+  {activities.map((activity, index) => (
+    <section id={activity.id} class:list={["section", { "bg-[var(--color-bg-secondary)]": index % 2 === 1 }]}>
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-4xl">
+              {activity.icon}
+            </div>
+            <h2 class="text-3xl font-bold">{activity.title}</h2>
+          </div>
+          
+          <p class="text-lg text-[var(--color-text-secondary)] mb-8 leading-relaxed">
+            {activity.description}
+          </p>
+          
+          <!-- Details -->
+          <div class="glass rounded-2xl p-6 mb-8">
+            <h3 class="font-semibold mb-4">詳細</h3>
+            <ul class="space-y-3">
+              {activity.details.map((detail) => (
+                <li class="flex items-start gap-3 text-[var(--color-text-secondary)]">
+                  <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <!-- Highlights -->
+          <div class="grid grid-cols-3 gap-4">
+            {activity.highlights.map((highlight) => (
+              <div class="card text-center">
+                <div class="text-sm text-[var(--color-text-secondary)] mb-1">{highlight.label}</div>
+                <div class="font-semibold text-primary-500">{highlight.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+  
+  <!-- CTA -->
+  <section class="section bg-[var(--color-bg-secondary)]">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">
+        <span class="gradient-text">活動に興味がありますか？</span>
+      </h2>
+      <p class="text-lg text-[var(--color-text-secondary)] mb-8 max-w-2xl mx-auto">
+        見学はいつでも大歓迎です。まずは気軽に遊びに来てください！
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/contact" class="btn-primary">
+          入部案内を見る
+        </a>
+        <a href="/works" class="btn-secondary">
+          作品を見る
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

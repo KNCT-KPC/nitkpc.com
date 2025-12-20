@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import Card from '../components/Card.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+// Get latest blog posts
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const latestPosts = allPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+// Activities data
+const activities = [
+  {
+    icon: '💻',
+    title: 'プログラミング学習',
+    description: 'C言語からWeb開発まで、幅広い技術を仲間と一緒に学べます。先輩が優しくサポートします。',
+    href: '/activities#learning'
+  },
+  {
+    icon: '🏆',
+    title: '高専プロコン',
+    description: '全国高専プログラミングコンテストに毎年参加。チーム開発で実践的なスキルが身につきます。',
+    href: '/activities#procon'
+  },
+  {
+    icon: '🎮',
+    title: 'オープンキャンパス・高専祭',
+    description: '自分たちの作品を展示し、来場者に発表する貴重な機会です。',
+    href: '/activities#events'
+  },
+  {
+    icon: '🚀',
+    title: 'U-16プロコン',
+    description: '新入生向けのプログラミングコンテスト。毎年1年生が全道大会へ進出しています。',
+    href: '/activities#u16'
+  }
+];
+
+// What you can learn
+const skills = [
+  { icon: '🔧', name: 'C / C++' },
+  { icon: '🐍', name: 'Python' },
+  { icon: '🌐', name: 'Web開発' },
+  { icon: '🎮', name: 'ゲーム開発' },
+  { icon: '🤖', name: 'AI / 機械学習' },
+  { icon: '🖥️', name: 'サーバー構築' },
+];
+---
+
+<BaseLayout title="NITKPC - 釧路高専プログラミング研究部">
+  <!-- Hero Section -->
+  <Hero 
+    title="プログラミングで、未来を創る"
+    subtitle="釧路高専プログラミング研究部は、プログラミングを通じて仲間と共に成長できる場所です。初心者から経験者まで、すべての学生を歓迎します。"
+  />
+  
+  <!-- About Section (Brief) -->
+  <section class="section bg-[var(--color-bg-secondary)]">
+    <div class="container mx-auto px-4">
+      <SectionTitle 
+        title="プロ研について"
+        subtitle="私たちは「楽しく学ぶ」をモットーに活動しています"
+      />
+      
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <p class="text-lg text-[var(--color-text-secondary)] mb-6">
+            プログラミング研究部（通称：プロ研）は、プログラミングなどの情報技術に興味を持った学生が集まり、みんなで楽しく話し合いながら学んでいる部活動です。
+          </p>
+          <p class="text-lg text-[var(--color-text-secondary)] mb-6">
+            色々な分野の仲間がいるので、普段の授業では学べないような幅広い知識を身につけることができます。
+          </p>
+          <a href="/about" class="btn-primary">
+            もっと詳しく
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+        
+        <div class="grid grid-cols-3 gap-4">
+          {skills.map((skill) => (
+            <div class="glass rounded-xl p-4 text-center hover:scale-105 transition-transform">
+              <div class="text-3xl mb-2">{skill.icon}</div>
+              <div class="text-sm font-medium">{skill.name}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Activities Section -->
+  <section class="section">
+    <div class="container mx-auto px-4">
+      <SectionTitle 
+        title="活動内容"
+        subtitle="プロ研では様々な活動を通じてスキルアップできます"
+      />
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        {activities.map((activity) => (
+          <Card 
+            title={activity.title}
+            description={activity.description}
+            icon={activity.icon}
+            href={activity.href}
+          />
+        ))}
+      </div>
+      
+      <div class="text-center mt-10">
+        <a href="/activities" class="btn-secondary">
+          すべての活動を見る
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Latest Blog Posts -->
+  <section class="section bg-[var(--color-bg-secondary)]">
+    <div class="container mx-auto px-4">
+      <SectionTitle 
+        title="最新のブログ"
+        subtitle="部員による技術記事や活動報告をお届けします"
+      />
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {latestPosts.map((post) => (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            author={post.data.author}
+            pubDate={post.data.pubDate}
+            href={`/blog/${post.slug}`}
+            image={post.data.image}
+            tags={post.data.tags}
+          />
+        ))}
+      </div>
+      
+      <div class="text-center mt-10">
+        <a href="/blog" class="btn-secondary">
+          すべての記事を見る
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container mx-auto px-4">
+      <div class="glass rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-accent-500/20 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-10">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            <span class="gradient-text">一緒にプログラミングを楽しもう</span>
+          </h2>
+          <p class="text-lg text-[var(--color-text-secondary)] mb-8 max-w-2xl mx-auto">
+            プロ研はあなたの入部をいつでも歓迎しています。興味がある方は、お気軽にお問い合わせください。
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/contact" class="btn-primary">
+              入部について
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+            <a href="https://discord.gg/7tebKugCWp" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+              Discordで質問する
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import Card from '../components/Card.astro';
+
+// Placeholder works data - これは実際のデータで置き換えてください
+const works = [
+  {
+    title: '作品タイトル 1',
+    description: '作品の説明がここに入ります。どのような技術を使って、どのような課題を解決したかなど。',
+    tags: ['Unity', 'C#', 'ゲーム開発'],
+    year: 2024,
+    image: null,
+  },
+  {
+    title: '作品タイトル 2',
+    description: '作品の説明がここに入ります。',
+    tags: ['Python', 'AI', '機械学習'],
+    year: 2024,
+    image: null,
+  },
+  {
+    title: '作品タイトル 3',
+    description: '作品の説明がここに入ります。',
+    tags: ['React', 'Node.js', 'Web'],
+    year: 2023,
+    image: null,
+  },
+];
+
+// プロコン参加実績 - プレースホルダー
+const proconHistory = [
+  { year: 2024, title: '第35回 高専プロコン', result: '参加予定' },
+  { year: 2023, title: '第34回 高専プロコン', result: '本選出場' },
+  { year: 2022, title: '第33回 高専プロコン', result: '本選出場' },
+];
+---
+
+<BaseLayout title="作品紹介 | NITKPC">
+  <!-- Page Header -->
+  <section class="pt-32 pb-16 bg-gradient-radial">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        <span class="gradient-text">作品紹介</span>
+      </h1>
+      <p class="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+        プログラミング研究部のこれまでの作品をご紹介します
+      </p>
+    </div>
+  </section>
+  
+  <!-- GitHub Link -->
+  <section class="section">
+    <div class="container mx-auto px-4">
+      <div class="glass rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-accent-500/10 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-10">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-[var(--color-card)] flex items-center justify-center">
+            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold mb-4">GitHubで作品を見る</h2>
+          <p class="text-[var(--color-text-secondary)] mb-6 max-w-2xl mx-auto">
+            私たちの作品のソースコードはGitHubで公開しています。<br/>
+            過去のプロジェクトや進行中のプロジェクトをご覧いただけます。
+          </p>
+          <a 
+            href="https://github.com/KNCT-KPC" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            GitHubを開く
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Recent Works -->
+  <section class="section bg-[var(--color-bg-secondary)]">
+    <div class="container mx-auto px-4">
+      <SectionTitle 
+        title="最近の作品"
+        subtitle="部員が制作した作品の一部をご紹介します"
+      />
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {works.map((work) => (
+          <div class="card group">
+            <!-- Placeholder Image -->
+            <div class="h-48 -mx-6 -mt-6 mb-4 bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center">
+              <svg class="w-16 h-16 text-primary-500/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2 mb-3">
+              {work.tags.map((tag) => (
+                <span class="px-2 py-0.5 text-xs font-medium bg-primary-500/10 text-primary-500 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <h3 class="text-lg font-bold mb-2 group-hover:text-primary-500 transition-colors">
+              {work.title}
+            </h3>
+            
+            <p class="text-sm text-[var(--color-text-secondary)] mb-4">
+              {work.description}
+            </p>
+            
+            <div class="text-sm text-[var(--color-text-secondary)]">
+              {work.year}年
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <p class="text-center mt-8 text-[var(--color-text-secondary)]">
+        ※ 作品情報は随時更新されます
+      </p>
+    </div>
+  </section>
+  
+  <!-- Procon History -->
+  <section class="section">
+    <div class="container mx-auto px-4">
+      <SectionTitle 
+        title="高専プロコン参加実績"
+        subtitle="全国プログラミングコンテストへの参加履歴"
+      />
+      
+      <div class="max-w-2xl mx-auto">
+        <div class="space-y-4">
+          {proconHistory.map((entry) => (
+            <div class="card flex items-center justify-between">
+              <div>
+                <div class="font-bold">{entry.title}</div>
+                <div class="text-sm text-[var(--color-text-secondary)]">{entry.year}年</div>
+              </div>
+              <div class="px-4 py-2 rounded-full bg-primary-500/10 text-primary-500 font-medium">
+                {entry.result}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="section bg-[var(--color-bg-secondary)]">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">
+        <span class="gradient-text">一緒に作品を作りませんか？</span>
+      </h2>
+      <p class="text-lg text-[var(--color-text-secondary)] mb-8 max-w-2xl mx-auto">
+        プロ研では、あなたのアイデアを形にするサポートをします
+      </p>
+      <a href="/contact" class="btn-primary">
+        入部案内を見る
+      </a>
+    </div>
+  </section>
+</BaseLayout>

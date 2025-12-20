@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+
+// Club info
+const clubInfo = [
+  { label: '研究会名', value: 'プログラミング研究会（プロ研）' },
+  { label: '会員数', value: '52人（2024年）' },
+  { label: '活動曜日', value: '月曜日 〜 金曜日（祝日は休み）' },
+  { label: '活動時間', value: '16:40 〜 18:00（放課後）' },
+  { label: '活動場所', value: '釧路高専 情報棟2F マルチワークラボラトリ' },
+  { label: '年会費', value: '1,000円（機材購入・活動費用に使用）' },
+];
+
+// What you can learn
+const learningTopics = [
+  {
+    category: 'プログラミング言語',
+    items: [
+      { name: 'C / C++', description: '授業で学ぶ基礎から応用まで' },
+      { name: 'Python', description: 'データ分析やAI開発に' },
+      { name: 'JavaScript / TypeScript', description: 'Web開発の必須スキル' },
+      { name: 'その他', description: 'Rust, Go, Kotlin など興味に応じて' },
+    ]
+  },
+  {
+    category: 'Web開発',
+    items: [
+      { name: 'フロントエンド', description: 'HTML/CSS, React, Vue.js など' },
+      { name: 'バックエンド', description: 'Node.js, Django, その他フレームワーク' },
+      { name: 'インフラ', description: 'サーバー構築、デプロイ、CI/CD' },
+    ]
+  },
+  {
+    category: 'その他の分野',
+    items: [
+      { name: 'ゲーム開発', description: 'Unity, Unreal Engine によるゲーム制作' },
+      { name: 'AI / 機械学習', description: '最先端技術に触れる' },
+      { name: '競技プログラミング', description: 'アルゴリズム力を鍛える' },
+      { name: '数学・物理', description: '専門科目のサポートも' },
+    ]
+  }
+];
+---
+
+<BaseLayout title="部活動紹介 | NITKPC">
+  <!-- Page Header -->
+  <section class="pt-32 pb-16 bg-gradient-radial">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        <span class="gradient-text">部活動紹介</span>
+      </h1>
+      <p class="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+        プログラミング研究部について詳しくご紹介します
+      </p>
+    </div>
+  </section>
+  
+  <!-- About -->
+  <section class="section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="glass rounded-3xl p-8 md:p-12">
+          <h2 class="text-2xl font-bold mb-6 gradient-text">あなたも一緒に学びませんか？</h2>
+          <p class="text-lg text-[var(--color-text-secondary)] mb-6 leading-relaxed">
+            プログラミング研究会では、プログラミングなどの興味を持った情報技術を、みんなで楽しく話し合いながら学んでいます。
+          </p>
+          <p class="text-lg text-[var(--color-text-secondary)] leading-relaxed">
+            色々な分野の仲間がいるので、普段の授業では学べないような幅広い知識を身につけることができます。主な活動は、4月に1年生対象のC言語の講習会や、オープンキャンパス・高専祭への出展、プログラミングコンテストへの参加・運営のお手伝いをしています。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Club Info -->
+  <section class="section bg-[var(--color-bg-secondary)]">
+    <div class="container mx-auto px-4">
+      <SectionTitle 
+        title="基本情報"
+        subtitle="プログラミング研究部の活動について"
+      />
+      
+      <div class="max-w-3xl mx-auto">
+        <div class="card">
+          <dl class="divide-y divide-[var(--color-border)]">
+            {clubInfo.map((info, index) => (
+              <div class:list={["flex flex-col sm:flex-row py-4", { "pt-0": index === 0 }, { "pb-0": index === clubInfo.length - 1 }]}>
+                <dt class="font-semibold text-primary-500 sm:w-40 shrink-0 mb-1 sm:mb-0">
+                  {info.label}
+                </dt>
+                <dd class="text-[var(--color-text-secondary)]">
+                  {info.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- What You Can Learn -->
+  <section class="section">
+    <div class="container mx-auto px-4">
+      <SectionTitle 
+        title="なにを学べるの？"
+        subtitle="プロ研で学べるのは、プログラミング言語だけではありません"
+      />
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {learningTopics.map((topic) => (
+          <div class="card">
+            <h3 class="text-xl font-bold mb-4 gradient-text">{topic.category}</h3>
+            <ul class="space-y-4">
+              {topic.items.map((item) => (
+                <li class="flex items-start gap-3">
+                  <div class="w-2 h-2 rounded-full bg-primary-500 mt-2 shrink-0"></div>
+                  <div>
+                    <div class="font-medium">{item.name}</div>
+                    <div class="text-sm text-[var(--color-text-secondary)]">{item.description}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      
+      <p class="text-center mt-8 text-[var(--color-text-secondary)]">
+        仲間が増えるほど、研究会全体の知識量が増えていきます。
+      </p>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="section bg-[var(--color-bg-secondary)]">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">
+        <span class="gradient-text">興味が湧きましたか？</span>
+      </h2>
+      <p class="text-lg text-[var(--color-text-secondary)] mb-8 max-w-2xl mx-auto">
+        プロ研はあなたの入部をいつでも歓迎しています。まずは見学からでもOKです！
+      </p>
+      <a href="/contact" class="btn-primary">
+        入部案内を見る
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

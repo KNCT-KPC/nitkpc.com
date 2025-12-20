@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+// Get all blog posts
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Get unique tags
+const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags))];
+---
+
+<BaseLayout title="ブログ | NITKPC">
+  <!-- Page Header -->
+  <section class="pt-32 pb-16 bg-gradient-radial">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        <span class="gradient-text">ブログ</span>
+      </h1>
+      <p class="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+        部員による技術記事や活動報告をお届けします
+      </p>
+    </div>
+  </section>
+  
+  <!-- Tags Filter -->
+  {allTags.length > 0 && (
+    <section class="py-8 border-b border-[var(--color-border)]">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap items-center justify-center gap-2">
+          <span class="text-sm text-[var(--color-text-secondary)] mr-2">タグ:</span>
+          {allTags.map((tag) => (
+            <span class="px-3 py-1 text-sm font-medium bg-[var(--color-card)] border border-[var(--color-border)] rounded-full hover:border-primary-500 hover:text-primary-500 transition-colors cursor-pointer">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+  
+  <!-- Blog Posts -->
+  <section class="section">
+    <div class="container mx-auto px-4">
+      {sortedPosts.length > 0 ? (
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {sortedPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              author={post.data.author}
+              pubDate={post.data.pubDate}
+              href={`/blog/${post.slug}`}
+              image={post.data.image}
+              tags={post.data.tags}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-20">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-[var(--color-card)] flex items-center justify-center">
+            <svg class="w-10 h-10 text-[var(--color-text-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold mb-2">まだ記事がありません</h2>
+          <p class="text-[var(--color-text-secondary)]">
+            最初の記事が投稿されるまでお待ちください
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+  
+  <!-- Write for Us CTA -->
+  <section class="section bg-[var(--color-bg-secondary)]">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-2xl font-bold mb-4">
+        <span class="gradient-text">記事を書いてみませんか？</span>
+      </h2>
+      <p class="text-[var(--color-text-secondary)] mb-6 max-w-2xl mx-auto">
+        部員の方は、技術記事や活動報告をブログに投稿できます。<br/>
+        Markdown形式で簡単に記事を作成できます。
+      </p>
+      <a 
+        href="https://github.com/KNCT-KPC/nitkpc.com" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="btn-secondary"
+      >
+        投稿方法を見る
+      </a>
+    </div>
+  </section>
+</BaseLayout>
