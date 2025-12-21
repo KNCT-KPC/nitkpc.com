@@ -8,6 +8,7 @@ const activities = [
     icon: '💻',
     title: 'プログラミング学習',
     description: '実験室にはパソコンやホワイトボードなどがあり、それらを活用しながら授業の課題や大会に向けてプログラミングを行なっています。',
+    image: '/images/activity-learning.jpg',
     details: [
       '自分のノートパソコン持ち込みOK! 持っていない方も，プロ研が所有するパソコンを利用できます',
       '分からないことがあれば，先輩部員がサポートします',
@@ -24,6 +25,7 @@ const activities = [
     icon: '🎪',
     title: 'オープンキャンパス・高専祭',
     description: 'プログラミング学習の一環として、毎年開催されるオープンキャンパス・高専祭に作品を展示しています。',
+    image: '/images/activity-events.jpg',
     details: [
       'C言語で作られた作品や、Unityで制作した3Dゲームなど、個性あふれる作品を展示',
       '来場者の方々に自分の作品を発表できる貴重な機会',
@@ -40,6 +42,7 @@ const activities = [
     icon: '🏆',
     title: '高専プロコン',
     description: '毎年10月に開催される「全国高等専門学校プログラミングコンテスト」に参加しています。',
+    image: '/images/activity-procon.jpg',
     details: [
       '3つの部門があり、与えられたテーマに従いながらチームで約半年に渡って作品を制作',
       'チーム開発をすることの大変さや、新しい技術との出会いなど、確実に自分をスキルアップに繋がります',
@@ -56,6 +59,7 @@ const activities = [
     icon: '🚀',
     title: 'U-16プロコン釧路大会',
     description: '新1年生(16歳以下)の会員の方には、毎年秋に行われる「U-16プログラミングコンテスト」に参加していただきます。',
+    image: '/images/activity-u16.jpg',
     details: [
       '数回にわたり大会に関する講習会も実施しているので、自信がない方も安心',
       '釧路大会で上位3位に入賞した方は全国大会に出場することができます',
@@ -87,41 +91,70 @@ const activities = [
   {activities.map((activity, index) => (
     <section id={activity.id} class:list={["section", { "bg-[var(--color-bg-secondary)]": index % 2 === 1 }]}>
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-4xl">
-              {activity.icon}
-            </div>
-            <h2 class="text-3xl font-bold">{activity.title}</h2>
-          </div>
-          
-          <p class="text-lg text-[var(--color-text-secondary)] mb-8 leading-relaxed">
-            {activity.description}
-          </p>
-          
-          <!-- Details -->
-          <div class="glass rounded-2xl p-6 mb-8">
-            <h3 class="font-semibold mb-4">詳細</h3>
-            <ul class="space-y-3">
-              {activity.details.map((detail) => (
-                <li class="flex items-start gap-3 text-[var(--color-text-secondary)]">
-                  <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  {detail}
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <!-- Highlights -->
-          <div class="grid grid-cols-3 gap-4">
-            {activity.highlights.map((highlight) => (
-              <div class="card text-center">
-                <div class="text-sm text-[var(--color-text-secondary)] mb-1">{highlight.label}</div>
-                <div class="font-semibold text-primary-500">{highlight.value}</div>
+        <div class="max-w-6xl mx-auto">
+          <div class:list={["grid md:grid-cols-2 gap-8 items-center", { "md:grid-flow-dense": index % 2 === 1 }]}>
+            
+            <!-- Text Content -->
+            <div class:list={[{ "md:col-start-2": index % 2 === 1 }]}>
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-3xl shrink-0">
+                  {activity.icon}
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold">{activity.title}</h2>
               </div>
-            ))}
+              
+              <p class="text-lg text-[var(--color-text-secondary)] mb-6 leading-relaxed">
+                {activity.description}
+              </p>
+              
+              <!-- Details -->
+              <div class="glass rounded-2xl p-5 mb-6">
+                <h3 class="font-semibold mb-3 text-sm">詳細</h3>
+                <ul class="space-y-2">
+                  {activity.details.map((detail) => (
+                    <li class="flex items-start gap-3 text-[var(--color-text-secondary)] text-sm">
+                      <svg class="w-4 h-4 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <!-- Highlights -->
+              <div class="grid grid-cols-3 gap-3">
+                {activity.highlights.map((highlight) => (
+                  <div class="card text-center p-3">
+                    <div class="text-xs text-[var(--color-text-secondary)] mb-1">{highlight.label}</div>
+                    <div class="font-semibold text-primary-500 text-sm">{highlight.value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <!-- Activity Image (16:9) -->
+            <div class:list={["relative", { "md:col-start-1": index % 2 === 1 }]}>
+              <div class="aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-primary-500/20 to-accent-500/20 border border-[var(--color-border)]">
+                <img 
+                  src={activity.image}
+                  alt={`${activity.title}の様子`}
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <!-- Placeholder shown when image is not available -->
+                <div class="absolute inset-0 flex items-center justify-center text-[var(--color-text-secondary)] hidden">
+                  <div class="text-center">
+                    <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <p class="text-sm">{activity.title}</p>
+                    <p class="text-xs opacity-70">16:9</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
