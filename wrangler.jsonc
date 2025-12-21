@@ -1,16 +1,16 @@
 {
-	"main": "dist/_worker.js/index.js",
-	"name": "dreary-doppler",
+  "main": "dist/_worker.js/index.js",
+  "name": "nitkpc",
   "compatibility_date": "2025-12-20",
   "compatibility_flags": [
     "nodejs_compat",
     "global_fetch_strictly_public"
   ],
-	"assets": {
-		"binding": "ASSETS",
-		"directory": "./dist"
-	},
-	"observability": {
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist"
+  },
+  "observability": {
     "enabled": true
   }
 }
