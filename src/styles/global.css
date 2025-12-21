@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* ===================================
    Theme Configuration (CSS Variables)
@@ -42,27 +43,34 @@
   --animate-float: float 3s ease-in-out infinite;
 
   @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes slide-up {
-    from { 
+    from {
       opacity: 0;
       transform: translateY(20px);
     }
-    to { 
+
+    to {
       opacity: 1;
       transform: translateY(0);
     }
   }
 
   @keyframes slide-down {
-    from { 
+    from {
       opacity: 0;
       transform: translateY(-10px);
     }
-    to { 
+
+    to {
       opacity: 1;
       transform: translateY(0);
     }
@@ -72,14 +80,22 @@
     from {
       box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
     }
+
     to {
       box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
     }
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
   }
 }
 
@@ -123,6 +139,26 @@
     background-color: var(--color-primary-500);
     color: white;
   }
+
+  /* Code block styling fix */
+  .prose pre {
+    background-color: #1e1e2e !important;
+    color: #cdd6f4 !important;
+  }
+
+  .prose pre code {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    color: inherit !important;
+  }
+
+  .prose :not(pre)>code {
+    background-color: var(--color-card);
+    color: var(--color-text);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
 }
 
 /* ===================================
@@ -130,6 +166,7 @@
    =================================== */
 
 @layer components {
+
   /* Glass Effect */
   .glass {
     background: rgba(255, 255, 255, 0.05);
@@ -251,11 +288,11 @@
 
   /* Gradient Background */
   .bg-gradient-radial {
-    background: radial-gradient(ellipse at top, var(--color-primary-950) 0%, transparent 50%);
+    background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.1) 30%, transparent 60%);
   }
 
   .dark .bg-gradient-radial {
-    background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+    background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.1) 30%, transparent 60%);
   }
 }
 
