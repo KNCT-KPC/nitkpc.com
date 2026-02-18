@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+#main_visual {
+    background-color: #e8f2fb;
+    display: flex;
+    color: #1a448f;
+    /* 範囲選択できないようにする */
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#visual_title {
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    margin-right: 0;
+}
+
+.large_title {
+    width: fit-content;
+}
+
+.small_title {
+    width: fit-content;
+    font-size: 9px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.catchphrase {
+    width: fit-content;
+    padding-top: 15px;
+}
+
+#visual_img {
+    margin: auto;
+    margin-right: 5%;
+    width: fit-content;
+}
+
+#main_visual svg {
+    width: 400px;
+}
+
+.bottom_wave {
+    position: absolute;
+    z-index: -1;
+    /* 範囲選択できないようにする */
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* タブレットよりも小さな画面 */
+@media screen and (max-width: 960px) {
+    .large_title {
+        font-size: 28px;
+    }
+    
+    .small_title {
+        font-size: 9px;
+    }
+
+    #visual_img {
+        margin-right: 2%;
+    }
+
+    #main_visual svg {
+        width: 280px;
+    }
+}
+
+/* スマホよりも小さな画面 */
+@media screen and (max-width: 760px) {
+    #main_visual {
+        flex-direction: column;
+    }
+
+    #visual_title {
+        margin: 0 auto;
+        margin-top: 30px;
+    }
+    
+    .large_title {
+        font-size: 25px;
+    }
+    
+    .small_title {
+        font-size: 7px;
+    }
+
+    #visual_img {
+        margin: 0 5% 0 auto;
+    }
+    
+    #main_visual svg {
+        width: 200px;
+        padding-top: 15px;
+    }
+}
+
+/* iphone8よりも小さな画面 */
+@media screen and (max-width: 760px) {
+    #visual_title {
+        width: 80%;
+    }
+}
