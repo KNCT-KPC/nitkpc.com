@@ -50,7 +50,7 @@ export default function Home(): ReactNode {
                 </tr>
                 <tr>
                   <th>会員数</th>
-                  <td>34人　(2023年)</td>
+                  <td>52人　(2025年度)</td>
                 </tr>
                 <tr>
                   <th>活動曜日</th>
@@ -99,7 +99,7 @@ export default function Home(): ReactNode {
                 <p>プログラミング研究会は、あなたの入部をいつでも歓迎しております。もちろん、兼部していただいても構いません。<br />入部しようか迷っている方のために、DiscordのサーバーやTwitterのDMも解放しておりますので、ぜひ気軽にご相談ください。<br />私たちは、あなたと共に学べる日を楽しみにしています。</p>
                 <div className={styles.flex_container}>
                   <div className={`${styles.discord} ${styles.square_button}`}>
-                    <a href="https://discord.gg/s5PX3xjT">
+                    <a href="https://discord.gg/ENsQWg6qp4">
                       <FaDiscord />
                       <span>Discordサーバーに参加</span>
                     </a>

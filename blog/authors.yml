@@ -4,7 +4,7 @@
 
 arumino-om:
   name: Arumino
-  title: ここには肩書きが入るようです．
+  title: 部員n号
   url: https://www.arumino-om.net
   image_url: https://github.com/arumino-om.png
   page: true
