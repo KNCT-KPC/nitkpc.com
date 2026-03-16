@@ -42,7 +42,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/KNCT-KPC/nitkpc.com/',
+            'https://github.com/KNCT-KPC/nitkpc.com/tree/main/',
         },
         blog: {
           blogSidebarTitle: "全ての投稿",
@@ -54,7 +54,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/KNCT-KPC/nitkpc.com/',
+            'https://github.com/KNCT-KPC/nitkpc.com/tree/main/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
