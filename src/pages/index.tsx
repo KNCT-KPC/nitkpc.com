@@ -36,20 +36,20 @@ export default function Home(): ReactNode {
               </div>
               <section id={styles.section1}>
                 <h1>あなたも一緒に学びませんか？</h1>
-                <p>プログラミング研究会では、プログラミングなどの興味を持った情報技術を、みんなで楽しく話し合いながら学んでいます。<br />色々な分野の仲間がいるので、普段の授業では学べないような幅広い知識を身につけることができます。</p>
+                <p>プログラミング研究部では、プログラミングなどの興味を持った情報技術を、みんなで楽しく話し合いながら学んでいます。<br />色々な分野の仲間がいるので、普段の授業では学べないような幅広い知識を身につけることができます。</p>
               </section>
             </article>
             <article className={styles.flex_container} id={styles.article2}>
               <section id={styles.section2}>
-                <p>主な活動は、4月に1年生対象のC言語の講習会や、オープンキャンパス・高専祭への出典、プログラミングコンテストへの参加・運営のお手伝いをしています。<br />昨年度は遠隔でしたが、3年生の情報や電子で学ぶC言語を、1年生が約3週間でマスターしました。また、U-16プログラミングコンテストでは、例年1年生が全道大会へ進出しています。</p>
+                <p>主な活動は、4月に1年生対象のC言語の講習会や、オープンキャンパス・高専祭への出典、プログラミングコンテストへの参加・運営のお手伝いをしています。<br />例年、3年生の情報や電子で学ぶC言語を、1年生が約3週間でマスターしています。また、U-16プログラミングコンテストでは、例年1年生が全道大会へ進出しています。</p>
               </section>
               <table id={styles.info_table}>
                 <tr>
                   <th>研究会名</th>
-                  <td>プログラミング研究会</td>
+                  <td>プログラミング研究部</td>
                 </tr>
                 <tr>
-                  <th>会員数</th>
+                  <th>部員数</th>
                   <td>52人　(2025年度)</td>
                 </tr>
                 <tr>
@@ -76,7 +76,7 @@ export default function Home(): ReactNode {
             <article id={styles.article3}>
               <section id={styles.section3}>
                 <h1>なにを学べるの？</h1>
-                <p>プログラミング研究会で学べるのは、プログラミング言語だけではありません。ゲーム作成やサーバー構築、Webサイトの制作、さらには情報の専門科目から数学・物理まで...<br />仲間が増えるほど、研究会全体の知識量が増えていきます。</p>
+                <p>プログラミング研究部で学べるのは、プログラミング言語だけではありません。ゲーム作成やサーバー構築、Webサイトの制作、さらには情報の専門科目から数学・物理まで...<br />仲間が増えるほど、研究会全体の知識量が増えていきます。</p>
               </section>
               <div className={styles.img_container}>
                 <img id={styles.text_mining} src="img/toppage/text_minings.png" />
@@ -96,7 +96,7 @@ export default function Home(): ReactNode {
               </section>
               <section id={styles.section4_right}>
                 <h1>お気軽にご相談ください</h1>
-                <p>プログラミング研究会は、あなたの入部をいつでも歓迎しております。もちろん、兼部していただいても構いません。<br />入部しようか迷っている方のために、DiscordのサーバーやTwitterのDMも解放しておりますので、ぜひ気軽にご相談ください。<br />私たちは、あなたと共に学べる日を楽しみにしています。</p>
+                <p>プログラミング研究部は、あなたの入部をいつでも歓迎しております。もちろん、兼部していただいても構いません。<br />入部しようか迷っている方のために、DiscordのサーバーやTwitterのDMも解放しておりますので、ぜひ気軽にご相談ください。<br />私たちは、あなたと共に学べる日を楽しみにしています。</p>
                 <div className={styles.flex_container}>
                   <div className={`${styles.discord} ${styles.square_button}`}>
                     <a href="https://discord.gg/ENsQWg6qp4">
