@@ -2,6 +2,8 @@ import { useEffect, type ReactNode } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import VisualImageSvg from '@site/src/components/svg/VisualImageSvg';
+import MvBottomSvg from '@site/static/img/toppage/mv_bottom.svg';
+import WaveSvg from '@site/static/img/toppage/wave.svg';
 import Swiper from 'swiper';
 
 import { FaDiscord, FaGithub, FaTwitter } from 'react-icons/fa';
@@ -25,7 +27,7 @@ export default function Home(): ReactNode {
           </div>
 
         </div>
-        <img className={styles.bottom_wave} src="img/toppage/mv_bottom.svg" />
+        <MvBottomSvg className={styles.bottom_wave} />
 
         <div id={styles.wrapper}>
           {/* main */}
@@ -72,7 +74,7 @@ export default function Home(): ReactNode {
 
             </article>
 
-            <img className={styles.wave} src="img/toppage/wave.svg" />
+            <WaveSvg className={styles.wave} />
             <article id={styles.article3}>
               <section id={styles.section3}>
                 <h1>なにを学べるの？</h1>
