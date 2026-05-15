@@ -1,15 +1,37 @@
 // HTMLエレメントに対する設定
 .global_root {
-    background-color: white;
+    --homepage-bg: white;
+    --homepage-section-bg: #f3f4f5;
+    --homepage-visual-bg: #e8f2fb;
+    --homepage-text-color: #535d60;
+    --homepage-heading-color: #1a448f;
+    --homepage-border-color: #e6e5e5;
+    --homepage-wave-fill: #f3f4f5;
+    --homepage-mv-wave-fill: #e8f2fb;
+    --homepage-white: white;
+
+    :global([data-theme='dark']) & {
+        --homepage-bg: #1b1b1d;
+        --homepage-section-bg: #242526;
+        --homepage-visual-bg: #1e2532;
+        --homepage-text-color: var(--ifm-font-color-base);
+        --homepage-heading-color: var(--ifm-color-primary);
+        --homepage-border-color: #444;
+        --homepage-wave-fill: #242526;
+        --homepage-mv-wave-fill: #1e2532;
+        --homepage-white: #1b1b1d;
+    }
+
+    background-color: var(--homepage-bg);
     main {
         h1 {
             font-size: 30px;
-            color: #1a448f;
+            color: var(--homepage-heading-color);
             margin-bottom: 10px;
         }
 
         h2 {
-            color: #1a448f;
+            color: var(--homepage-heading-color);
             margin-bottom: 5px;
         }
 
@@ -18,7 +40,7 @@
             letter-spacing: 1px;
             line-height: 29px;
             font-weight: 400;
-            color:#535d60;
+            color: var(--homepage-text-color);
         }
     }
 
@@ -48,10 +70,14 @@
 .wave {
     width: 100%;
     vertical-align: bottom;
-    background-color: white;
+    background-color: var(--homepage-bg);
     /* 範囲選択できないようにする */
     user-select: none;
     -webkit-user-select: none;
+    path {
+        fill: var(--homepage-wave-fill);
+        transition: fill 0.2s ease-in-out;
+    }
 }
 
 .square_button {
@@ -160,9 +186,9 @@
     MAIN VISUAL
 --------------------------------------------------------------*/
 #main_visual {
-    background-color: #e8f2fb;
+    background-color: var(--homepage-visual-bg);
     display: flex;
-    color: #1a448f;
+    color: var(--homepage-heading-color);
     /* 範囲選択できないようにする */
     user-select: none;
     -webkit-user-select: none;
@@ -202,11 +228,15 @@
 
 .bottom_wave {
     position: absolute;
-    background-color: white;
+    background-color: var(--homepage-bg);
     z-index: 0;
     /* 範囲選択できないようにする */
     user-select: none;
     -webkit-user-select: none;
+    path {
+        fill: var(--homepage-mv-wave-fill);
+        transition: fill 0.2s ease-in-out;
+    }
 }
 
 /* タブレットよりも小さな画面 */
@@ -276,14 +306,14 @@
     border-spacing: 0;
 
     th, td {
-        border: .1px solid #e6e5e5;
+        border: .1px solid var(--homepage-border-color);
         padding: 10px 0;
     }
     
     th {
         width: 120px;
         font-weight: 600;
-        color: #1a448f;
+        color: var(--homepage-heading-color);
         text-align: center;
         font-size: 14px;
     }
@@ -291,7 +321,7 @@
     td {
         padding: 10px 20px;
         font-size: 13px;
-        color:#535d60;
+        color: var(--homepage-text-color);
     }
 }
 
@@ -404,7 +434,7 @@
     position: relative;
     padding-top: 10px;
     padding-bottom: 30px;
-    background-color: #f3f4f5;
+    background-color: var(--homepage-section-bg);
 
     .img_container {
         margin: auto;
@@ -422,7 +452,7 @@
     top: 60px;
     max-width: 450px;
     padding: 25px 30px;
-    background-color: white;
+    background-color: var(--homepage-white);
 
     h1 {
         margin-bottom: 3px;
@@ -461,7 +491,7 @@
 --------------------------------------------------------------*/
 #article4 {
     padding: 30px auto;
-    background-color: #f3f4f5;
+    background-color: var(--homepage-section-bg);
 }
 
 #section4_left {
@@ -508,7 +538,7 @@
     ARTICLE 5
 --------------------------------------------------------------*/
 #article5 {
-    background-color: #f3f4f5;
+    background-color: var(--homepage-section-bg);
     padding-top: 30px;
     padding-bottom: 10px;
     position: relative;
@@ -520,7 +550,7 @@
 
 .swiper_slide {
     display: flex;
-    background-color: white;
+    background-color: var(--homepage-white);
 
     .img_container{
         width: fit-content;
